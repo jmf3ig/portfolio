@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import { ChevronDown, CheckCircle, TrendingUp, Users, Target, Compass, Settings, Layers } from 'lucide-react';
 
@@ -258,7 +259,7 @@ const PortfolioSite = () => {
             <div className="bg-red-50 border-2 border-red-200 rounded-xl p-8">
               <div className="flex items-center gap-3 mb-4">
                 <ChevronDown className="w-8 h-8 text-red-600" />
-                <h3 className="text-2xl font-bold text-red-900">Without Action</h3>
+                <h3 className="text-2xl font-bold text-red-900">Without Actions</h3>
               </div>
               <p className="text-lg text-red-800">{current.failure}</p>
             </div>
