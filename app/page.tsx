@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import { ChevronDown, CheckCircle, TrendingUp, Users, Target, Compass, Settings, Layers } from 'lucide-react';
 
 const PortfolioSite = () => {
-  const [activeStory, setActiveStory] = useState('strategic');
-
+const [activeStory, setActiveStory] = useState<'strategic' | 'operational' | 'delivery'>('strategic');
   const stories = {
     'strategic': {
       icon: Compass,
