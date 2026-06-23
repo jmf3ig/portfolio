@@ -109,7 +109,7 @@ const [activeStory, setActiveStory] = useState<'strategic' | 'operational' | 'de
     }
   };
 
-  const current = stories[activeStory];
+  const current = stories[activeStory as 'strategic' | 'operational' | 'delivery'];
   const Icon = current.icon;
 
   return (
@@ -119,8 +119,8 @@ const [activeStory, setActiveStory] = useState<'strategic' | 'operational' | 'de
         <div className="max-w-5xl mx-auto px-6 py-20">
           <div className="mb-8 flex gap-2 flex-wrap">
             {Object.keys(stories).map((key) => {
-              const StoryIcon = stories[key].icon;
-              return (
+  const StoryIcon = stories[key as 'strategic' | 'operational' | 'delivery'].icon;
+                return (
                 <button
                   key={key}
                   onClick={() => setActiveStory(key)}
