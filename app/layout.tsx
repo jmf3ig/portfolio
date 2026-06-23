@@ -16,7 +16,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Joshua Falconer — Design Leader",
+  title: "Joshua Feig — Design Leader",
   description: "Strategic design leader driving business outcomes through research, craft, and operational excellence.",
 };
 

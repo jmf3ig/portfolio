@@ -110,8 +110,8 @@ const stories: Record<StoryKey, {
     success: 'Products launch with high user satisfaction. Adoption rates exceed targets. Users actually use what you build. Business metrics improve because the design works.',
     failure: 'Projects ship but fail to get adopted. User satisfaction remains mediocre. Redesigns become necessary. Competitors ship better experiences and win.',
     stats: [
-      { label: 'Products Shipped', value: '3', context: 'Major initiatives from concept to launch' },
-      { label: 'SUS Achievement', value: '90', context: 'Sustained over 5 years of use' },
+      { label: 'Enterprise Products Shipped', value: '3', context: 'Major initiatives from concept to launch' },
+      { label: 'User Satisfaction (SUS)', value: '90', context: 'Sustained over 5 years of use' },
       { label: 'User Adoption', value: '100%', context: 'Clients fully adopted new experiences' },
     ],
     caseStudy: {
