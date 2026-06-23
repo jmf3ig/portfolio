@@ -123,7 +123,7 @@ const [activeStory, setActiveStory] = useState<'strategic' | 'operational' | 'de
                 return (
                 <button
                   key={key}
-                  onClick={() => setActiveStory(key)}
+                  onClick={() => setActiveStory(key as 'strategic' | 'operational' | 'delivery')}
                   className={`px-4 py-2 rounded text-sm font-medium transition-all flex items-center gap-2 ${
                     activeStory === key
                       ? 'bg-blue-500 text-white'
@@ -131,7 +131,7 @@ const [activeStory, setActiveStory] = useState<'strategic' | 'operational' | 'de
                   }`}
                 >
                   <StoryIcon className="w-4 h-4" />
-                  {stories[key].title}
+                  {stories[key as 'strategic' | 'operational' | 'delivery'].title}
                 </button>
               );
             })}
