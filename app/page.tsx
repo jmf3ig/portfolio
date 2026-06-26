@@ -463,29 +463,34 @@ const PortfolioSite = () => {
               </p>
             </div>
             <div>
-              <button
-                style={{
-                  background: 'var(--amber)',
-                  color: 'var(--ink)',
-                  border: 'none',
-                  padding: '0.9rem 1.75rem',
-                  fontSize: '0.75rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  transition: 'opacity 0.2s',
-                  whiteSpace: 'nowrap',
-                }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = '0.85'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = '1'; }}
+              <a
+                href="mailto:joshua.feig@gmail.com"
+                style={{ textDecoration: 'none' }}
               >
-                {config.ctaText}
-                <ArrowUpRight style={{ width: '0.85rem', height: '0.85rem' }} />
-              </button>
+                <button
+                  style={{
+                    background: 'var(--amber)',
+                    color: 'var(--ink)',
+                    border: 'none',
+                    padding: '0.9rem 1.75rem',
+                    fontSize: '0.75rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    transition: 'opacity 0.2s',
+                    whiteSpace: 'nowrap',
+                  }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = '0.85'; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = '1'; }}
+                >
+                  {config.ctaText}
+                  <ArrowUpRight style={{ width: '0.85rem', height: '0.85rem' }} />
+                </button>
+              </a>
             </div>
           </div>
 
