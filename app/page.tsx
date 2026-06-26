@@ -1,6 +1,47 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CheckCircle, TrendingUp, ArrowUpRight, Minus } from 'lucide-react';
+
+type RoleKey = 'generic' | 'netflix-identity';
+
+const roleConfigs: Record<RoleKey, {
+  headerSubtitle: string;
+  problemTitle: string;
+  problemText: string;
+  fitTitle: string;
+  fitIntro: string;
+  fitPoints: string[];
+  ctaText: string;
+}> = {
+  'generic': {
+    headerSubtitle: 'Design Leader',
+    problemTitle: 'Your Design Challenge',
+    problemText: 'You need a design leader who can build strategy in ambiguity, maintain craft under constraints, and solve inherently complex problems. Someone who connects design decisions to business outcomes and empowers teams to make good decisions independently.',
+    fitTitle: 'Why This Works',
+    fitIntro: 'My experience solving design challenges across complex, constraint-rich environments:',
+    fitPoints: [
+      'I thrive in ambiguity—turning undefined problems into strategic direction',
+      'I maintain quality and consistency even under resource constraints',
+      'I design solutions to complex problems with competing stakeholder needs',
+      'I connect design work to business outcomes and measurable impact',
+    ],
+    ctaText: 'Let\'s build something great together',
+  },
+  'netflix-identity': {
+    headerSubtitle: 'Senior Product Designer, Identity',
+    problemTitle: 'Netflix\'s Challenge',
+    problemText: 'You need someone to own multiple interconnected identity, access, and account initiatives—but the requirements are still evolving. There\'s no perfect solution yet. You need a designer who can structure ambiguous, high-constraint problems (privacy, legal, global regulations, technical systems) and propose holistic solutions that Netflix leadership can commit to.',
+    fitTitle: 'How This Maps to the Netflix Identity Role',
+    fitIntro: 'Netflix\'s job description requires:',
+    fitPoints: [
+      'Netflix needs someone comfortable with "evolving systems and requirements"—I thrive there',
+      'Identity is full of constraints (privacy, legal, consent, regulations)—I excel at using constraints as design inputs',
+      'Identity decisions affect trust, adoption, and global compliance—I understand how design connects to business strategy',
+      'Netflix leadership will ask "why," not "how"—I build defensible strategies that stakeholders want to partner on',
+    ],
+    ctaText: 'Let\'s build identity strategy that scales',
+  },
+};
 
 type StoryKey = 'strategic' | 'operational' | 'delivery';
 
@@ -27,7 +68,7 @@ const stories: Record<StoryKey, {
     problem: 'Your design team ships work, but design isn\'t driving business strategy. Leadership sees it as a service function, not a strategic partner. You need someone who can connect design decisions to revenue, retention, and market position.',
     guide: 'I\'ve transformed design from "make it pretty" to strategic business driver in organizations that actively resisted it',
     experience: [
-      'Positioned design as solution to client attrition crisis—turned around 100% client retention through modernization',
+      'Positioned design as solution to client attrition crisis—turned around 97% client retention through modernization',
       'Built frameworks that outlasted projects: UX principles, consulting guides, career paths that scaled beyond me',
       'Changed stakeholder perception through business-outcome workshops—made research tangible in research-hostile culture',
       'Partnered with product leadership to embed design in roadmap planning, not just execution',
@@ -41,8 +82,8 @@ const stories: Record<StoryKey, {
     success: 'Design becomes a board-level conversation. Product roadmaps are co-created with design. Business outcomes improve measurably. Your team gets budget and headcount because leadership sees the ROI.',
     failure: 'Design remains tactical. Talented leaders leave for companies where design has real influence. Competitors with stronger design strategies win market share.',
     stats: [
-      { label: 'Client Retention', value: '100%', context: 'Strategic design prevented attrition' },
-      { label: 'SUS Score', value: '90', context: 'Business outcome, not vanity metric' },
+      { label: 'Client Retention', value: '97%', context: 'Strategic design prevents attrition' },
+      { label: 'System Usability Score', value: '90', context: 'Business outcome, not vanity metric' },
       { label: 'Systems Built', value: '5+', context: 'Frameworks that scale beyond projects' },
     ],
     caseStudy: {
@@ -61,7 +102,7 @@ const stories: Record<StoryKey, {
     guide: 'I\'ve built design operations from scratch in resource-constrained, process-immature environments',
     experience: [
       'Led daily and weekly design team rituals—syncs, backlog refinements—that kept teams aligned and shipping',
-      'Hired and onboarded 3 interns on annual cycle, partnered on internship program framework creation',
+      'Hired and onboarded 4 interns on annual cycle, partnered on internship program framework creation',
       'Wrote career framework for multiple UX discipline levels—gave team clear growth paths',
       'Created design system documentation and consulting guide—operationalized design knowledge',
       'Managed through significant disruption: team layoffs, budget constraints, aggressive timelines with unfamiliar technology',
@@ -129,6 +170,16 @@ const PortfolioSite = () => {
   const [activeStory, setActiveStory] = useState<StoryKey>('strategic');
   const current = stories[activeStory];
 
+  const [role, setRole] = useState<RoleKey>('generic');
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const roleParam = params.get('role') ?? 'generic';
+    if (roleParam in roleConfigs) {
+      setRole(roleParam as RoleKey);
+    }
+  }, []);
+  const config = roleConfigs[role];
+
   return (
     <div style={{ background: 'var(--ink)', color: 'var(--cream)', minHeight: '100vh' }}>
 
@@ -139,7 +190,7 @@ const PortfolioSite = () => {
             Joshua Feig
           </span>
           <span style={{ fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--cream-muted)', fontWeight: 500 }}>
-            Design Leader
+            {config.headerSubtitle}
           </span>
         </div>
       </header>
@@ -233,11 +284,46 @@ const PortfolioSite = () => {
         <div className="page-inner section-block">
           <p className="section-eyebrow">The Problem</p>
           <h2 className="font-display" style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 600, lineHeight: 1.2, marginBottom: '1.25rem', letterSpacing: '-0.015em', maxWidth: '720px' }}>
-            The Problem You&apos;re Facing
+            {config.problemTitle}
           </h2>
           <p style={{ fontSize: '1rem', color: 'var(--cream-muted)', lineHeight: 1.8, maxWidth: '680px' }}>
-            {current.problem}
+            {config.problemText}
           </p>
+        </div>
+      </section>
+
+      {/* ── Fit ── */}
+      <section style={{ borderBottom: '1px solid var(--rule)' }}>
+        <div className="page-inner section-block">
+          <p className="section-eyebrow">{role === 'generic' ? 'Why This Works' : 'Role Fit'}</p>
+          <h2 className="font-display" style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 600, lineHeight: 1.2, marginBottom: '1.5rem', letterSpacing: '-0.015em' }}>
+            {config.fitTitle}
+          </h2>
+          {config.fitIntro && (
+            <p style={{ fontSize: '1rem', color: 'var(--cream-muted)', lineHeight: 1.65, marginBottom: '2rem', maxWidth: '600px' }}>
+              {config.fitIntro}
+            </p>
+          )}
+          <div>
+            {config.fitPoints.map((point, idx) => (
+              <div
+                key={idx}
+                style={{
+                  padding: '1rem 0',
+                  borderTop: '1px solid var(--rule)',
+                  display: 'flex',
+                  gap: '1rem',
+                  alignItems: 'flex-start',
+                }}
+              >
+                <CheckCircle style={{ width: '0.95rem', height: '0.95rem', color: 'var(--amber)', flexShrink: 0, marginTop: '0.25rem' }} />
+                <span style={{ fontSize: '0.95rem', color: 'var(--cream-muted)', lineHeight: 1.65 }}>
+                  {point}
+                </span>
+              </div>
+            ))}
+            <div style={{ borderTop: '1px solid var(--rule)' }} />
+          </div>
         </div>
       </section>
 
@@ -397,7 +483,7 @@ const PortfolioSite = () => {
                 onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = '0.85'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = '1'; }}
               >
-                {current.cta}
+                {config.ctaText}
                 <ArrowUpRight style={{ width: '0.85rem', height: '0.85rem' }} />
               </button>
             </div>
@@ -408,7 +494,7 @@ const PortfolioSite = () => {
               Joshua Feig · Design Leader
             </span>
             <span style={{ fontSize: '0.68rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--cream-muted)', opacity: 0.45 }}>
-              View case studies · Download résumé · Schedule a conversation
+              View case studies · <a href="/FeigResume-UX-26.pdf">Download résumé</a> · Schedule a conversation
             </span>
           </div>
         </div>
