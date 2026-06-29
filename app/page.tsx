@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { CheckCircle, TrendingUp, ArrowUpRight, Minus } from 'lucide-react';
 
-type RoleKey = 'generic' | 'netflix-identity';
+type RoleKey = 'generic' | 'netflix-identity' | 'figma-product-design';
 
 const roleConfigs: Record<RoleKey, {
   headerSubtitle: string;
@@ -26,6 +26,20 @@ const roleConfigs: Record<RoleKey, {
       'I connect design work to business outcomes and measurable impact',
     ],
     ctaText: 'Let\'s build something great together',
+  },
+  'figma-product-design': {
+    headerSubtitle: 'Manager, Product Design',
+    problemTitle: 'Figma\'s Challenge',
+    problemText: 'You need a design leader who can build and scale a world-class design team while staying hands-on with product execution. Someone who can navigate emerging technologies (AI, code generation, creative tooling), mentor designers at all levels, and advocate for design excellence in a fast-moving environment. You need a manager who does both: develops people AND ships products.',
+    fitTitle: 'How This Maps to Figma\'s Design Manager Role',
+    fitIntro: '',
+    fitPoints: [
+      'I\u2019ve built design teams from ground up\u2014hired talent, established career frameworks, created team rituals that scaled delivery',
+      'I ship high-quality products while managing people\u201490+ SUS sustained over 5 years proves craft excellence isn\'t sacrificed for scale',
+      'I thrive in fast-paced, ambiguous environments where technology evolves\u2014I\'ve navigated AI adoption challenges and led teams through uncertainty',
+      'I mentor and develop designers across skill levels\u2014established progression paths and ran workshops that developed team capability',
+    ],
+    ctaText: 'Let\'s build design excellence at scale',
   },
   'netflix-identity': {
     headerSubtitle: 'Senior Product Designer, Identity',
