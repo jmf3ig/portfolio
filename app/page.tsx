@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { CheckCircle, TrendingUp, ArrowUpRight, Minus } from 'lucide-react';
 
-type RoleKey = 'generic' | 'netflix-identity' | 'figma-product-design';
+type RoleKey = 'generic' | 'netflix-identity' | 'figma-product-design' | 'fortive-director-product-design';
 
 const roleConfigs: Record<RoleKey, {
   headerSubtitle: string;
@@ -26,6 +26,20 @@ const roleConfigs: Record<RoleKey, {
       'I connect design work to business outcomes and measurable impact',
     ],
     ctaText: 'Let\'s build something great together',
+  },
+  'fortive-director-product-design': {
+    headerSubtitle: 'Sr. Director, Product & Design',
+    problemTitle: 'Fortive\'s Challenge',
+    problemText: 'You need a senior leader who can own product strategy AND design execution\u2014someone who can elevate an entire organization\'s product thinking while maintaining design excellence. Operating across multiple companies, you need a director who builds design maturity at scale while staying hands-on with product direction and user-centered decisions.',
+    fitTitle: 'Why This Fits',
+    fitIntro: '',
+    fitPoints: [
+      'I\'ve shipped 4 major products while managing teams\u2014I\'m equally comfortable with product strategy and design execution',
+      'I\'ve scaled design capability across complex organizations (WTW had design-resistant culture, enterprise context)',
+      'I understand enterprise software and complex organizational dynamics\u2014navigated multiple stakeholders, competing priorities',
+      'I\'ve built design maturity in organizations that don\'t naturally value design\u2014proven ability to establish credibility',
+    ],
+    ctaText: 'Let\'s lead product & design together',
   },
   'figma-product-design': {
     headerSubtitle: 'Manager, Product Design',
